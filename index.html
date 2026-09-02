@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#090b12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Executive Drill">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<title>Executive Presence — 5 Minute Daily Drill</title>
+<style>
+html,body{margin:0;min-height:100%;background:#090b12;color:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}button,select,textarea,input{font:inherit;color:#f5f7fb;background:#171b27;border:1px solid #394052;border-radius:12px}
+button,select{min-height:44px}button{cursor:pointer;font-weight:700}button:active{transform:scale(.97)}
+.app{max-width:780px;margin:auto;padding:0 16px 48px}.timerbar{position:sticky;top:0;z-index:10;padding:12px 0;background:rgba(9,11,18,.96);border-bottom:1px solid #252b3a}
+.timerrow{display:flex;align-items:center;gap:12px}.timer{font-size:40px;font-weight:800;letter-spacing:-.04em}.timerinfo{flex:1}.timerblock{font-size:11px;color:#aeb6c8;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.progress{height:5px;margin-top:8px;background:#242a38;border-radius:99px;overflow:hidden}.fill{height:100%;width:0;background:#f5b942}
+.timer-actions{display:flex;gap:6px}.timer-actions button{width:44px;padding:0}
+header{padding:30px 0 22px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#b6bdcb;margin-bottom:10px}h1{font-size:clamp(36px,11vw,62px);line-height:.98;margin:0;letter-spacing:-.04em}h2{font-size:clamp(25px,7vw,34px);margin:7px 0 0;letter-spacing:-.03em}.intro,.lead{color:#aeb6c8;line-height:1.55;font-size:14px}
+.section{margin:18px 0;padding:20px;border-radius:22px;background:var(--panel);border:1px solid var(--border);scroll-margin-top:80px}
+.sounds{--accent:#f5b942;--border:rgba(245,185,66,.42);--panel:#19150d}.rhythm{--accent:#ff7f6e;--border:rgba(255,127,110,.42);--panel:#1b1113}.phrases{--accent:#63d6ae;--border:rgba(99,214,174,.42);--panel:#0d1916}.live{--accent:#7dd3fc;--border:rgba(125,211,252,.42);--panel:#0d151d}
+.head{display:flex;justify-content:space-between;gap:12px}.badge{display:inline-block;padding:6px 10px;border-radius:99px;background:var(--accent);color:#090b12;font-size:10px;font-weight:800;letter-spacing:.1em}.time{font-size:11px;color:#8790a3;padding-top:7px;white-space:nowrap}
+.card{border-top:1px solid #302c25;padding:17px 0}.card:first-of-type{border-top:0}.card strong{font-size:16px}.example{font-family:Georgia,serif;color:var(--accent);font-size:15px}.explain{color:#b7becd;font-size:13px;line-height:1.55}.pairs{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.pair{padding:9px;border-radius:9px;background:#ffffff08;font-family:Georgia,serif;font-size:13px}.pair b{color:var(--accent);font-family:inherit;font-size:10px}.practice{margin:11px 0;padding:12px 14px;border-left:3px solid var(--accent);background:#0003;font-family:Georgia,serif;line-height:1.5}.hear{background:var(--accent);color:#090b12;border-color:var(--accent);min-height:40px;padding:7px 12px;font-size:12px}
+.rhythm-note{padding:13px;border-radius:12px;background:#ff7f6e14;color:#c9cfd9;font-size:13px;line-height:1.55}.rhythm-card{margin:10px 0;padding:15px;border:1px solid #ff7f6e30;border-radius:15px}.rhythm-sentence{font-family:Georgia,serif;font-size:22px;line-height:1.55;color:#7c8494}.stress{color:#ffad9f;font-family:inherit;font-weight:800;cursor:pointer}.pulse{animation:pulse .55s ease}@keyframes pulse{35%{transform:scale(1.16);color:white}}
+.phrase-grid{display:grid;gap:9px}.phrase{border:1px solid #63d6ae3d;border-radius:14px;overflow:hidden;background:#0003}.phrase button{width:100%;border:0;border-radius:0;background:#121c19;text-align:left;padding:14px}.phrase-detail{display:none;padding:0 14px 14px;color:#aebdb7;font-size:12px;line-height:1.5}.phrase.open .phrase-detail{display:block}
+.challenge{padding:17px;border:1px solid #7dd3fc40;border-radius:15px;background:#0a1118}.meta{color:#7dd3fc;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.challenge-text{font-family:Georgia,serif;font-size:20px;line-height:1.45}.challenge-actions{display:flex;gap:8px;flex-wrap:wrap}.challenge-actions button{padding:8px 12px;background:#162331;border-color:#34516a;font-size:12px}.challenge-actions .hear{background:#7dd3fc;border-color:#7dd3fc}
+label{display:block;color:#aeb6c8;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin:16px 0 7px}textarea{width:100%;min-height:140px;padding:14px;resize:vertical;background:#111521;line-height:1.5}.chips{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 15px}.chip{padding:8px 11px;min-height:40px;border-radius:99px;background:#121d27;border-color:#33495b;color:#b9c6d3;font-size:11px}.chip.active{border-color:#7dd3fc;background:#173c4f;color:#e7f8ff}.coach{width:100%;background:#7dd3fc;color:#061018;border-color:#7dd3fc}.result{display:none;margin-top:14px;padding:15px;border:1px solid #294357;border-radius:14px;background:#101a23;color:#d6e2eb;font-size:13px;line-height:1.55}.result.show{display:block}.result h3{font-size:13px;color:#7dd3fc;margin:13px 0 5px}.result h3:first-child{margin-top:0}
+details{margin-top:16px;padding-top:14px;border-top:1px solid #273847;color:#93a9b9;font-size:12px}select,input{width:100%;padding:10px;background:#111921}details button{margin-top:8px;padding:8px 12px;background:#172a36;border-color:#385a70}.note{color:#71808e;font-size:10px;line-height:1.45}
+.complete{text-align:center;padding:20px 0}.streak{color:#aeb6c8;font-size:13px}.streak strong{color:#f5b942;font-size:22px}.done{width:100%;max-width:360px;margin-top:10px;background:#f5b942;color:#090b12;border-color:#f5b942}.done:disabled{opacity:.65}
+@media(min-width:620px){.section{padding:25px}.pairs{grid-template-columns:repeat(4,1fr)}.phrase-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="timerbar"><div class="timerrow"><div class="timer" id="timer">5:00</div><div class="timerinfo"><div class="timerblock" id="block">Sounds · 0:00–1:00</div><div class="progress"><div class="fill" id="fill"></div></div></div><div class="timer-actions"><button id="pause">Ⅱ</button><button id="reset">↺</button></div></div></div>
+
+<header><div class="eyebrow">● Daily executive presence</div><h1>Sound senior.<br>Stay warm.</h1><p class="intro">Five focused minutes for British English rhythm, targeted pronunciation, diplomatic pushback and live executive response.</p></header>
+
+<section class="section sounds"><div class="head"><div><span class="badge">01 · Sounds</span><h2>Make the key sounds cleaner.</h2></div><span class="time">0:00–1:00</span></div><p class="lead">Clarity beats accent imitation. Practise the features below with a light, controlled touch.</p>
+<div class="card"><strong>Drop the post-vocalic R</strong> <span class="example">quarter → quaw-tuh</span><p class="explain">In non-rhotic British English, an r after a vowel is usually not pronounced unless the next sound is a vowel.</p><div class="pairs"><div class="pair"><b>quarter</b> → quaw-tuh</div><div class="pair"><b>car</b> → cah</div><div class="pair"><b>order</b> → aw-duh</div><div class="pair"><b>part</b> → paht</div></div><div class="practice">“We’ll review the <strong>quarter</strong> figures before the board call.”</div><button class="hear" data-speak="We’ll review the quarter figures before the board call.">▶ Hear it</button></div>
+<div class="card"><strong>Use the long open “ah”</strong> <span class="example">can't → kahnt</span><p class="explain">In many standard Southern British pronunciations, the vowel in can't, after, staff, half and chance is long and open.</p><div class="pairs"><div class="pair"><b>can't</b> → kahnt</div><div class="pair"><b>after</b> → ahf-tuh</div><div class="pair"><b>staff</b> → stahf</div><div class="pair"><b>chance</b> → chahns</div></div><div class="practice">“I can’t commit to that timing until after the tax review.”</div><button class="hear" data-speak="I can’t commit to that timing until after the tax review.">▶ Hear it</button></div>
+<div class="card"><strong>Put the tongue between the teeth for TH</strong> <span class="example">the → thuh</span><p class="explain">For th, the tongue tip lightly touches or comes just between the teeth. Avoid substituting t, d, s or z.</p><div class="pairs"><div class="pair"><b>the</b> → thuh</div><div class="pair"><b>this</b> → dhis</div><div class="pair"><b>that</b> → dhat</div><div class="pair"><b>they</b> → dhay</div></div><div class="practice">“That’s the thing I’d like us to think through before we decide.”</div><button class="hear" data-speak="That’s the thing I’d like us to think through before we decide.">▶ Hear it</button></div>
+</section>
+
+<section class="section rhythm"><div class="head"><div><span class="badge">02 · Rhythm</span><h2>Stop giving every word equal weight.</h2></div><span class="time">1:00–2:00</span></div><p class="rhythm-note">English is stress-timed: important words are longer, clearer and stronger, while function words compress. Think <b>DA-da-da</b>, not <b>DA-DA-DA-DA</b>.</p>
+<div class="rhythm-card"><div class="rhythm-sentence">I <span class="stress">NEED</span> the <span class="stress">NUM</span>bers by <span class="stress">THURS</span>day.</div><p class="note">Tap stressed words for a visual pulse.</p><button class="hear" data-speak="I need the numbers by Thursday.">▶ Hear it</button></div>
+<div class="rhythm-card"><div class="rhythm-sentence">We <span class="stress">CAN</span> take that <span class="stress">OFF</span>line for <span class="stress">NOW</span>.</div><p class="note">Compress “that / for”.</p><button class="hear" data-speak="We can take that offline for now.">▶ Hear it</button></div>
+<div class="rhythm-card"><div class="rhythm-sentence">I’d <span class="stress">PUSH</span> back <span class="stress">GEN</span>tly on <span class="stress">THAT</span>.</div><p class="note">Make “gently” lighter, not louder.</p><button class="hear" data-speak="I’d push back gently on that.">▶ Hear it</button></div>
+</section>
+
+<section class="section phrases"><div class="head"><div><span class="badge">03 · Phrase Bank</span><h2>Diplomatic does not mean weak.</h2></div><span class="time">2:00–3:30</span></div><p class="lead">Tap a card to reveal the executive function of the phrase.</p><div class="phrase-grid" id="phrases"></div></section>
+
+<section class="section live"><div class="head"><div><span class="badge">04 · Live Rep</span><h2>Handle the room.</h2></div><span class="time">3:30–5:00</span></div><p class="lead">Read the challenge. Pause. Say your answer aloud before typing it. Aim for one position, one rationale and one next step.</p>
+<div class="challenge"><div class="meta" id="meta"></div><div class="challenge-text" id="challenge"></div><div class="challenge-actions"><button class="hear" id="challengeHear">▶ Hear it</button><button id="different">↻ Different challenge</button></div></div>
+<label for="reply">What would you say?</label><textarea id="reply" placeholder="Say it aloud first. Then type the response you would actually give in the room…"></textarea>
+<div class="chips"><button class="chip">○ Said it out loud first</button><button class="chip">○ Used a phrase from the bank</button><button class="chip">○ Paused before the key point</button></div>
+<button class="coach" id="coach">Get coaching</button><div class="result" id="result"></div>
+<details><summary>Voice & coaching settings</summary><label for="voice">Speech voice</label><select id="voice"><option>Loading installed voices…</option></select><p class="note">For better UK voices on iPhone: Settings → Accessibility → Spoken Content → Voices → English (UK).</p><label for="key">OpenAI API key — optional</label><input id="key" type="password" placeholder="Paste your own API key"><button id="save">Save key locally</button><p class="note">The key is stored only in this browser's localStorage. For a production app, use a backend rather than exposing an API key in the client.</p></details>
+</section>
+
+<div class="complete"><div class="streak">Current streak: <strong id="streak">0</strong> day<span id="plural">s</span></div><button class="done" id="done">✓ Mark today done</button><p class="note">Your streak is stored locally on this device.</p></div>
+</div>
+
+<script>
+const phrases=[
+["I’d push back gently on that.","Signals disagreement clearly while lowering the interpersonal temperature."],
+["That’s a fair challenge.","Shows you have heard the concern before explaining why your position still stands."],
+["Broadly yes, with one caveat.","Keeps alignment as the headline while creating room for an important qualification."],
+["That’s not quite where I’d land.","Rejects the proposed conclusion without making the other person sound foolish."],
+["Shall we take that offline?","Moves a detailed or potentially unproductive debate out of the main forum."],
+["I’d separate those two points.","Prevents two different issues from being bundled into one conclusion."],
+["I’m not sure I’d go that far.","Applies measured resistance to an extreme conclusion."],
+["There’s a bit more nuance to it.","Creates permission to explain complexity without sounding evasive."],
+["I can work with that in principle.","Signals constructive intent while leaving practical conditions open."],
+["I’d be cautious about committing to that just yet.","Slows premature commitment and protects credibility when evidence is incomplete."]
+];
+const challenges=[
+["CFO","I understand the tax position, but this feels rather more complicated than it needs to be. Why can’t we simply take the pragmatic route and move on?"],
+["Country GM","We’ve been through this before. The business needs an answer today, not another tax discussion. Can you give me a simple yes or no?"],
+["Audit Committee","If this position is as robust as you suggest, why are we still carrying so much uncertainty around the outcome?"],
+["External auditor","I’m struggling to see sufficient support for the treatment. What, specifically, gives you confidence that this would withstand challenge?"],
+["Peer Function Head","I appreciate the technical point, but you’re making this sound like a bigger issue than anyone else in the business seems to think it is."],
+["CEO","Can we not just settle this? I don’t particularly want a tax debate sitting in the middle of the decision."],
+["Regional CFO","You’re asking the market to change its process for a relatively small amount of VAT. Is that really proportionate?"],
+["Country Finance Director","I’m not convinced the additional controls are worth the effort. What problem are we actually solving?"],
+["CFO","If you were running the business rather than advising it, would you honestly make the same recommendation?"],
+["Business President","I need you to be commercially minded here. We can’t let a tax technicality dictate the business decision."],
+["External auditor","Your interpretation is defensible, but so is the alternative. Why should we conclude that yours is the more appropriate treatment?"],
+["Group Controller","I’m hearing a lot of caveats. What is your actual recommendation?"],
+["Country GM","We’re already late. If the tax team can’t clear this today, I’ll have to make the call without you."],
+["CFO","I don’t need another presentation. I need you to tell me what we should do and what happens if we get it wrong."],
+["Peer Function Head","That sounds like a very tax-led answer. What would the commercially sensible answer be?"],
+["Audit Committee Chair","Why should the committee accept your judgement over the local team’s judgement? They are closer to the transaction."],
+["Regional CEO","Can you give me the two-minute version? I’m not interested in the detail unless it changes the decision."],
+["Country CFO","I think you’re being overly cautious. We’ve never had a problem with this approach before."],
+["External auditor","Would you be prepared to put that conclusion in writing as your final position?"],
+["CFO","If the answer is no, why exactly are we spending so much time trying to make it a yes?"],
+["Country GM","The customer will not understand this distinction. Can’t we just absorb the VAT and keep the deal moving?"],
+["Chief Procurement Officer","I’m not convinced tax should have a veto here. Surely this is ultimately a commercial decision."],
+["CFO","You’ve said there’s a risk, but you haven’t quantified it. How concerned should I actually be?"],
+["Peer Function Head","I’d rather not reopen this. We agreed the process months ago. What has materially changed?"],
+["CEO","I’m going to need you to be more decisive. Senior leadership shouldn’t have to arbitrate every technical disagreement."],
+["Country GM","I’m not asking you to ignore the rules. I’m asking whether there’s a sensible way of interpreting them that lets us deliver the plan."],
+["CFO","You’ve had three weeks to resolve this. What is preventing you from giving me a firm answer now?"],
+["Audit Committee Chair","What would have to happen for you to change your recommendation?"],
+["CFO","I’m not asking you to compromise your standards. I’m asking whether your standards are proportionate to the value at stake."],
+["Regional CEO","I’ve got five minutes. What is the one thing you need me to understand about this?"]
+];
+
+const $=id=>document.getElementById(id);
+function speak(t){if(!("speechSynthesis"in window)){alert("Speech synthesis is not available.");return} speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.voice=voices[Number($("voice").value)]||null;u.lang=u.voice?.lang||"en-GB";u.rate=.88;speechSynthesis.speak(u)}
+let voices=[];
+function loadVoices(){voices=speechSynthesis.getVoices().slice().sort((a,b)=>(b.lang.toLowerCase().startsWith("en-gb")?1:0)-(a.lang.toLowerCase().startsWith("en-gb")?1:0));$("voice").innerHTML=voices.map((v,i)=>`<option value="${i}">${v.name} — ${v.lang}</option>`).join("")||"<option>No installed voices detected</option>"}
+if("speechSynthesis"in window){speechSynthesis.onvoiceschanged=loadVoices;loadVoices();setTimeout(loadVoices,500)}
+
+phrases.forEach((p,i)=>{const d=document.createElement("div");d.className="phrase";d.innerHTML=`<button><span>${i+1}. “${p[0]}”</span></button><div class="phrase-detail">${p[1]}<br><br><button class="hear" type="button">▶ Hear it</button></div>`;d.querySelector("button").onclick=()=>d.classList.toggle("open");d.querySelector(".hear").onclick=e=>{e.stopPropagation();speak(p[0])};$("phrases").appendChild(d)});
+document.querySelectorAll(".hear[data-speak]").forEach(b=>b.onclick=()=>speak(b.dataset.speak));
+document.querySelectorAll(".stress").forEach(e=>e.onclick=()=>{e.classList.remove("pulse");void e.offsetWidth;e.classList.add("pulse")});
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{c.classList.toggle("active");c.textContent=(c.classList.contains("active")?"✓ ":"○ ")+c.textContent.replace(/^[○✓]\s*/,"")});
+
+let ci=((new Date().getFullYear()*1000+new Date().getMonth()*31+new Date().getDate())%challenges.length);
+function renderChallenge(i){ci=i;$("meta").textContent=`Today’s stakeholder challenge · ${challenges[i][0]}`;$("challenge").textContent=`“${challenges[i][1]}”`;$("challengeHear").onclick=()=>speak(challenges[i][1])}
+renderChallenge(ci);
+$("different").onclick=()=>{let n;do n=Math.floor(Math.random()*challenges.length);while(n===ci);renderChallenge(n)};
+
+function offlineCoach(t){
+let l=t.toLowerCase(),notes=[];
+if(l.includes("just"))notes.push("Remove “just” where it shrinks an otherwise clear point.");
+if(l.includes("i think"))notes.push("“I think” can be replaced with a direct recommendation when you are confident.");
+if(l.includes("sorry"))notes.push("Avoid apologising for ordinary professional disagreement.");
+if(l.includes("maybe"))notes.push("“Maybe” can make a firm recommendation sound tentative.");
+let swap=l.includes("i think")?"Try: “My recommendation would be…”":l.includes("maybe")?"Try: “One option would be…”":l.includes("sorry")?"Try: “I’d push back gently on that…”":"Try: “That’s a fair challenge. My recommendation would be…”";
+let words=t.trim()?t.trim().split(/\s+/).length:0;
+let length=words<12?"Add one reason so the room understands the basis for your position.":words>100?"Shorten it. Lead with the decision and remove background that does not change the decision.":"The length is broadly appropriate; make sure the first sentence contains your position.";
+return `<h3>How it lands</h3><p>${length}</p><h3>Register</h3><p>${notes.length>1?"There are several softeners that may make the position sound more negotiable than intended.":notes.length?"Broadly good, with one softener worth tightening.":"No obvious over-softening detected."}</p><h3>Phrasing to swap</h3><p>${notes.join(" ")||"No obvious phrase-level issue detected."} ${swap}</p><h3>Accent watch</h3><p>Stress the content words and avoid giving every word equal weight. Watch TH, long “ah” vowels, and post-vocalic R in any relevant words.</p><h3>Say it like this</h3><p><b>${swap} Then give the key reason and the next step.</b></p>`}
+$("coach").onclick=async()=>{const t=$("reply").value.trim();$("result").className="result show";$("result").innerHTML=offlineCoach(t)};
+
+$("save").onclick=()=>{const k=$("key").value.trim();k?localStorage.setItem("executivePresenceOpenAIKey",k):localStorage.removeItem("executivePresenceOpenAIKey");alert(k?"API key saved locally.":"Saved API key removed.")};
+$("key").value=localStorage.getItem("executivePresenceOpenAIKey")||"";
+
+let streak=Number(localStorage.getItem("eps")||0),last=localStorage.getItem("epd");
+function dateKey(){let d=new Date();return d.toISOString().slice(0,10)}
+function renderStreak(){$("streak").textContent=streak;$("plural").textContent=streak===1?"":"s";if(last===dateKey()){$("done").disabled=true;$("done").textContent="✓ Today completed"}}
+$("done").onclick=()=>{let t=dateKey();if(last===t)return;if(last){let a=new Date(last+"T12:00:00"),b=new Date(t+"T12:00:00");streak=Math.round((b-a)/86400000)===1?streak+1:1}else streak=1;last=t;localStorage.setItem("eps",streak);localStorage.setItem("epd",last);renderStreak()};renderStreak();
+
+const blocks=[["Sounds",0,60],["Rhythm",60,120],["Phrase Bank",120,210],["Live Rep",210,300]];let elapsed=0,running=true,lastTime=performance.now();
+function update(){let rem=Math.max(0,300-elapsed),m=Math.floor(rem/60),s=Math.ceil(rem%60);$("timer").textContent=`${m}:${String(s).padStart(2,"0")}`;let b=blocks.find(x=>elapsed<x[2])||blocks[3];$("block").textContent=`${b[0]} · ${Math.floor(b[1]/60)}:${String(b[1]%60).padStart(2,"0")}–${Math.floor(b[2]/60)}:${String(b[2]%60).padStart(2,"0")}`;$("fill").style.width=Math.min(100,elapsed/300*100)+"%"}
+function loop(now){if(running){elapsed+=(now-lastTime)/1000;if(elapsed>=300){elapsed=300;running=false;$("pause").textContent="▶"}update()}lastTime=now;requestAnimationFrame(loop)}requestAnimationFrame(loop);
+$("pause").onclick=()=>{running=!running;$("pause").textContent=running?"Ⅱ":"▶";lastTime=performance.now()};
+$("reset").onclick=()=>{running=false;elapsed=0;$("pause").textContent="▶";update();scrollTo({top:0,behavior:"smooth"})};update();
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+  });
+}
+</script>
+
+</body>
+</html>
